@@ -33,4 +33,17 @@ public class Key {
     public String toString() {
         return key;
     }
+    public void catenate(Key keyO){
+        for(int iter=0; iter<keyO.key.length(); iter++){
+            if(keyO.key.charAt(iter) != '-' && key.charAt(iter)=='-')
+                key=key.substring(0,iter)+keyO.key.charAt(iter)+key.substring(iter+1);
+        }
+    }
+    public int count(){
+        int output=0;
+        for(int iter=0; iter<key.length(); iter++){
+            if(key.charAt(iter) != '-' ) output++;
+        }
+        return output;
+    }
 }
