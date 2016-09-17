@@ -16,7 +16,7 @@ public class EvilHangman implements StudentEvilHangmanGameController {
     private Set<String> current_words=new TreeSet();
     private int number_of_guesses=0;
     private int current_guess=0;
-    private Set<Character> used_characters;
+    private Set<Character> used_characters=new TreeSet<Character>();
     private Key current_key;
     @Override public GAME_STATUS getGameStatus() {
         if(!(current_key.toString().contains("-"))) return GAME_STATUS.PLAYER_WON;
@@ -45,7 +45,6 @@ public class EvilHangman implements StudentEvilHangmanGameController {
         }
         dictionary_input.close();
         current_key=new Key(word_length);
-        used_characters=new TreeSet<Character>();
     }
     @Override public Set<String> makeGuess(char guess) throws GuessAlreadyMadeException {
         if(!(used_characters.add(guess))) throw new GuessAlreadyMadeException();
@@ -59,7 +58,7 @@ public class EvilHangman implements StudentEvilHangmanGameController {
                 word_sets.put(current_key,new HashSet<String>());
             word_sets.get(current_key).add(current_word);
         }
-        Key current_code=new Key("",guess);
+        Key current_code=new Key();
         current_words=new HashSet<String>();
         for (Map.Entry<Key, Set<String>> iter1 : word_sets.entrySet()) {
             if(iter1.getValue().size()>current_words.size()) {

@@ -6,6 +6,7 @@ package cs240.byu.edu.evilhangman_android.StudentPackage;
 public class Key {
     private int hash_code=0;
     private String key=new String();
+    public Key(){}
     public Key(int size){
         while(size-- > 0) key+="-";
     }
@@ -13,7 +14,7 @@ public class Key {
         for(int iter=0; iter<word.length(); iter++)
             if (word.charAt(iter) == c) {
                 key += c;
-                hash_code+=2^iter;
+                hash_code+=Math.pow(2,iter);
             }
             else
                 key+="-";
@@ -23,7 +24,7 @@ public class Key {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Key keyO = (Key)o;
-        return key == keyO.key;
+        return hashCode() == keyO.hashCode();
     }
     @Override
     public int hashCode() {
