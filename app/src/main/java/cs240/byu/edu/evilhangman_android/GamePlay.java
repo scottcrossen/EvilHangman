@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Set;
 
+import cs240.byu.edu.evilhangman_android.StudentPackage.EvilHangman;
 import cs240.byu.edu.evilhangman_android.StudentPackage.IEvilHangmanGame;
 import cs240.byu.edu.evilhangman_android.StudentPackage.StudentEvilHangmanGameController;
 
@@ -66,13 +67,7 @@ public class GamePlay extends AppCompatActivity
             }
         });
 
-
-        /**
-         * TODO attach your controller here. Your controller is your class that implements
-         * {link #StudentEvilHangmanGameController}
-         * e.g.: studentController = new MyEvilHangmanGame();
-         */
-        studentController = null;
+        studentController = new EvilHangman();
 
         if(studentController == null)
         {

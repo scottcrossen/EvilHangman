@@ -12,7 +12,7 @@ public class Key {
     public Key(String word, char c){
         for(int iter=0; iter<word.length(); iter++)
             if (word.charAt(iter) == c) {
-                key += word.charAt(iter);
+                key += c;
                 hash_code+=2^iter;
             }
             else

@@ -19,8 +19,8 @@ public class EvilHangman implements StudentEvilHangmanGameController {
     private Set<Character> used_characters;
     private Key current_key;
     @Override public GAME_STATUS getGameStatus() {
+        if(!(current_key.toString().contains("-"))) return GAME_STATUS.PLAYER_WON;
         if(current_guess<number_of_guesses) return GAME_STATUS.NORMAL;
-        if(current_words.size()==1) return GAME_STATUS.PLAYER_WON;
         if(current_guess==number_of_guesses) return GAME_STATUS.PLAYER_LOST;
         return null;
     }
@@ -39,12 +39,13 @@ public class EvilHangman implements StudentEvilHangmanGameController {
     @Override public void startGame(InputStreamReader dictionary, int word_length) {
         Scanner dictionary_input=new Scanner(dictionary);
         while (dictionary_input.hasNext()) {
-            String next_word= dictionary_input.next();
+            String next_word= dictionary_input.next().toLowerCase();
             if(next_word.length()==word_length)
                 current_words.add(next_word);
         }
         dictionary_input.close();
         current_key=new Key(word_length);
+        used_characters=new TreeSet<Character>();
     }
     @Override public Set<String> makeGuess(char guess) throws GuessAlreadyMadeException {
         if(!(used_characters.add(guess))) throw new GuessAlreadyMadeException();
@@ -59,16 +60,17 @@ public class EvilHangman implements StudentEvilHangmanGameController {
             word_sets.get(current_key).add(current_word);
         }
         Key current_code=new Key("",guess);
-        current_words=new TreeSet<String>();
+        current_words=new HashSet<String>();
         for (Map.Entry<Key, Set<String>> iter1 : word_sets.entrySet()) {
-            if(iter1.getValue().size()==current_words.size()){
-                if(current_code.count()<iter1.getKey().count() || (current_code.count()==iter1.getKey().count() && iter1.getKey().hashCode()>current_code.hashCode()))
-                    current_words=iter1.getValue();
-                    current_code=iter1.getKey();
-                }
-            else if(iter1.getValue().size()>current_words.size()) {
+            if(iter1.getValue().size()>current_words.size()) {
                 current_words=iter1.getValue();
                 current_code=iter1.getKey();
+            }
+            else if(iter1.getValue().size()==current_words.size()){
+                if(current_code.count()<iter1.getKey().count() || (current_code.count()==iter1.getKey().count() && iter1.getKey().hashCode()>current_code.hashCode())) {
+                    current_words = iter1.getValue();
+                    current_code = iter1.getKey();
+                }
             }
         }
         current_key.catenate(current_code);
