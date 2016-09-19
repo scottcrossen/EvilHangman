@@ -66,7 +66,7 @@ public class EvilHangman implements StudentEvilHangmanGameController {
                 current_code=iter1.getKey();
             }
             else if(iter1.getValue().size()==current_words.size()){
-                if(current_code.count()<iter1.getKey().count() || (current_code.count()==iter1.getKey().count() && iter1.getKey().hashCode()>current_code.hashCode())) {
+                if(current_code.count()>iter1.getKey().count() || (current_code.count()==iter1.getKey().count() && iter1.getKey().hashCode()>current_code.hashCode())) {
                     current_words = iter1.getValue();
                     current_code = iter1.getKey();
                 }
