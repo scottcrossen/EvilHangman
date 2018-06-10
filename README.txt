@@ -1,16 +1,17 @@
-██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗
-██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║
-███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║
-██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║
-██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║
-╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+# Hangman
 
-BYU CS 240 Project
-OWNER: Scott Leland Crossen
-CONTRIBUTERS: Scott Crossen
+A simple hangman game for android.
 
-SUMMARY:
-This is a project designed to fulfill the requirements of the BYU CS 240 project by the same title.
+### Description
 
-CONTACT:
-Scott Leland Crossen	scottcrossen42@gmail.com	scottcrossen42.com
+I originally built this project to pass off the requirements for a class assignment.
+
+### Explanatory Note
+
+I created this project before I learned better practices. As such, it's not my best work, but it does help demonstrate the creativity I had even when I was learning.
+
+### Contributors
+
+1. Scott Leland Crossen  
+<http://scottcrossen.com>  
+<scottcrossen42@gmail.com>  
